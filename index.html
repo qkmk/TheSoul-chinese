@@ -21,11 +21,8 @@
   <script src="immolate.js"></script>
   <script src="UI.js" defer></script>
   <style>
-    @font-face {
-      font-family: 'm6x11';
-      src: url('/m6x11plus.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
+    body, h1, p {
+      font-family: "Microsoft YaHei", "微软雅黑", Arial, Helvetica, sans-serif;
     }
     
     body, h1, p {
@@ -102,7 +99,7 @@
 
     button {
       font-family: "m6x11", sans-serif;
-      font-size: 1.5em;
+      font-size: 1em;
       background-color: #f2f2f2;
       color: #333;
     }
@@ -213,149 +210,166 @@
   <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>The Soul</title>
+    <title>灵魂</title>
   </head>
   <body>
-    <h1>The Soul</h1>
+    <div style="text-align:center; margin-bottom: 12px;">
+      <h1 style="font-size:2.2em; letter-spacing:2px; margin-bottom: 0.2em;">灵魂——小丑牌种子解析器</h1>
+      <div style="font-size:1.1em; color:#888; margin-bottom: 0.5em;">
+        <span style="background: #f3f3f3; border-radius: 8px; padding: 4px 12px; display: inline-block;">
+          汉化&修改：奇科莫肯
+      </div>
+    </div>
     <div class="container">
       <div class="input-section">
-        <h2>Settings</h2>
-        <label for="seed">Seed:</label>
+        <h2>配置</h2>
+        <label for="seed">种子:</label>
         <input type="text" id="seed" maxlength="8" pattern="[A-Z1-9]{1,8}" required>
         <br>
-        <label for="ante">Max Ante:</label>
-        <input type="number" id="ante" min="1" max="999" value="8" required>
         <br>
-        <label for="cardsPerAnte">Cards per Ante:</label>
-        <input type="text" id="cardsPerAnte" value = "15,50,50,50,50,50,50,50" required>
+        <label>选择要预测的底注及每局商店卡牌数量：</label>
+        <button id="addAnteBtn" type="button">添加底注</button>
+        <div id="anteSelectContainer">
+          <!-- 动态生成ante选择和输入框 -->
+        </div>
         <br>
-        <label for="deck">Deck:</label>
-        <select id="deck" required>
-          <option value="Red Deck">Red Deck</option>
-          <option value="Blue Deck">Blue Deck</option>
-          <option value="Yellow Deck">Yellow Deck</option>
-          <option value="Green Deck">Green Deck</option>
-          <option value="Black Deck">Black Deck</option>
-          <option value="Magic Deck">Magic Deck</option>
-          <option value="Nebula Deck">Nebula Deck</option>
-          <option value="Ghost Deck">Ghost Deck</option>
-          <option value="Abandoned Deck">Abandoned Deck</option>
-          <option value="Checkered Deck">Checkered Deck</option>
-          <option value="Zodiac Deck">Zodiac Deck</option>
-          <option value="Painted Deck">Painted Deck</option>
-          <option value="Anaglyph Deck">Anaglyph Deck</option>
-          <option value="Plasma Deck">Plasma Deck</option>
-          <option value="Erratic Deck">Erratic Deck</option>
-          <!-- Add deck options here -->
-        </select>
-        <br>
-        <label for="stake">Stake:</label>
-        <select id="stake" required>
-          <option value="White Stake">White Stake</option>
-          <option value="Red Stake">Red Stake</option>
-          <option value="Green Stake">Green Stake</option>
-          <option value="Black Stake">Black Stake</option>
-          <option value="Blue Stake">Blue Stake</option>
-          <option value="Purple Stake">Purple Stake</option>
-          <option value="Orange Stake">Orange Stake</option>
-          <option value="Gold Stake">Gold Stake</option>
-          <!-- Add stake options here -->
-        </select>
-        <br>
-        <label for="version">Version:</label>
-        <select id="version" required>
-          <option value="10106">1.0.1f</option>
-          <option value="10103">1.0.1c</option>
-          <option value="10014">1.0.0n</option>
-          <!-- Add version options here -->
-        </select>
-        <br>
-        <button id="openCheckboxesBtn">Modify Unlocks</button>
-        <div id="checkboxesOverlay">
-          <div id="checkboxesPopup">
-            <h2>Unlocked Items</h2>
-            <div id="checkboxesContainer" class="clearfix"></div>
-            <button id="submitBtn">Submit</button>
-            <button id="unlockBtn">Unlock All</button>
-            <button id="lockBtn">Lock All</button>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div>
+            <label for="deck">牌组:</label>
+            <select id="deck" required>
+              <option value="Red Deck">红色牌组</option>
+              <option value="Blue Deck">蓝色牌组</option>
+              <option value="Yellow Deck">黄色牌组</option>
+              <option value="Green Deck">绿色牌组</option>
+              <option value="Black Deck">黑色牌组</option>
+              <option value="Magic Deck">魔法牌组</option>
+              <option value="Nebula Deck">星云牌组</option>
+              <option value="Ghost Deck">幽灵牌组</option>
+              <option value="Abandoned Deck">废弃牌组</option>
+              <option value="Checkered Deck">方格牌组</option>
+              <option value="Zodiac Deck">黄道牌组</option>
+              <option value="Painted Deck">彩绘牌组</option>
+              <option value="Anaglyph Deck">浮雕牌组</option>
+              <option value="Plasma Deck">等离子牌组</option>
+              <option value="Erratic Deck">古怪牌组</option>
+              <!-- Add deck options here -->
+            </select>
+          </div>
+          <div>
+            <label for="stake">赌注:</label>
+            <select id="stake" required>
+              <option value="White Stake">白色赌注</option>
+              <option value="Red Stake">红色赌注</option>
+              <option value="Green Stake">绿色赌注</option>
+              <option value="Black Stake">黑色赌注</option>
+              <option value="Blue Stake">蓝色赌注</option>
+              <option value="Purple Stake">紫色赌注</option>
+              <option value="Orange Stake">橙色赌注</option>
+              <option value="Gold Stake">金色赌注</option>
+              <!-- Add stake options here -->
+            </select>
           </div>
         </div>
         <br>
-        <button id="analyzeButton">Analyze</button>
-        <button id="copyButton">Copy Link</button>
+        <div style="display: flex; align-items: center; gap: 16px;">
+          <div>
+            <label for="version">版本:</label>
+            <select id="version" required>
+              <option value="10106">1.0.1f</option>
+              <option value="10103">1.0.1c</option>
+              <option value="10014">1.0.0n</option>
+              <!-- Add version options here -->
+            </select>
+          </div>
+          <div>
+            <button id="openCheckboxesBtn">修改解锁</button>
+          </div>
+        </div>
+        <div id="checkboxesOverlay">
+          <div id="checkboxesPopup">
+            <h2>解锁物品</h2>
+            <div id="checkboxesContainer" class="clearfix"></div>
+            <button id="submitBtn">确认</button>
+            <button id="unlockBtn">全部解锁</button>
+            <button id="lockBtn">全部锁定</button>
+          </div>
+        </div>
+        <br>
+        <button id="analyzeButton">开始分析</button>
+        <button id="copyButton">拷贝链接</button>
       </div>
       <div class="output-section">
-        <h2>Output</h2>
+        <h2>文本输出</h2>
         <textarea id="outputBox" rows="16" readonly></textarea>
         <br>
-        <button id="downloadButton" style="font-size: 1em">Download</button>
+        <button id="downloadButton" style="font-size: 1em">保存为txt</button>
       </div>
     </div>
   </body>
   <script>
     //Unlocks stuff
     // Option values
-    const options = ["Negative Tag",
-                    "Foil Tag",
-                    "Holographic Tag",
-                    "Polychrome Tag",
-                    "Rare Tag",
-                    "Golden Ticket",
-                    "Mr. Bones",
-                    "Acrobat",
-                    "Sock and Buskin",
-                    "Swashbuckler",
-                    "Troubadour",
-                    "Certificate",
-                    "Smeared Joker",
-                    "Throwback",
-                    "Hanging Chad",
-                    "Rough Gem",
-                    "Bloodstone",
-                    "Arrowhead",
-                    "Onyx Agate",
-                    "Glass Joker",
-                    "Showman",
-                    "Flower Pot",
-                    "Blueprint",
-                    "Wee Joker",
-                    "Merry Andy",
-                    "Oops! All 6s",
-                    "The Idol",
-                    "Seeing Double",
-                    "Matador",
-                    "Hit the Road",
-                    "The Duo",
-                    "The Trio",
-                    "The Family",
-                    "The Order",
-                    "The Tribe",
-                    "Stuntman",
-                    "Invisible Joker",
-                    "Brainstorm",
-                    "Satellite",
-                    "Shoot the Moon",
-                    "Driver's License",
-                    "Cartomancer",
-                    "Astronomer",
-                    "Burnt Joker",
-                    "Bootstraps",
-                    "Overstock Plus",
-                    "Liquidation",
-                    "Glow Up",
-                    "Reroll Glut",
-                    "Omen Globe",
-                    "Observatory",
-                    "Nacho Tong",
-                    "Recyclomancy",
-                    "Tarot Tycoon",
-                    "Planet Tycoon",
-                    "Money Tree",
-                    "Antimatter",
-                    "Illusion",
-                    "Petroglyph",
-                    "Retcon",
-                    "Palette"]
+    const options = ["负片标签",
+                    "闪箔标签",
+                    "镭射标签",
+                    "多彩标签",
+                    "稀有标签",
+                    "黄金门票",
+                    "骷髅先生",
+                    "杂技演员",
+                    "喜与悲",
+                    "侠盗",
+                    "游吟诗人",
+                    "证书",
+                    "模糊小丑",
+                    "回溯",
+                    "未断选票",
+                    "璞玉",
+                    "血石",
+                    "箭头",
+                    "缟玛瑙",
+                    "玻璃小丑",
+                    "马戏团长",
+                    "花盆",
+                    "蓝图",
+                    "小小丑",
+                    "快乐安迪",
+                    "六六大顺",
+                    "偶像",
+                    "重影",
+                    "斗牛士",
+                    "上路吧杰克",
+                    "二重奏",
+                    "三重奏",
+                    "一家人",
+                    "秩序",
+                    "部落",
+                    "特技演员",
+                    "隐形小丑",
+                    "头脑风暴",
+                    "卫星",
+                    "射月",
+                    "驾驶执照",
+                    "卡牌术士",
+                    "天文学家",
+                    "烧焦小丑",
+                    "提靴带",
+                    "库存过剩加强版",
+                    "清算",
+                    "焕彩",
+                    "重掷加强版",
+                    "预兆球",
+                    "天文台",
+                    "玉米片夹",
+                    "回收魔法",
+                    "塔罗大亨",
+                    "星球大亨",
+                    "摇钱树",
+                    "反物质",
+                    "幻象",
+                    "岩画",
+                    "重构",
+                    "调色板"]
     selectedOptions = Array(61).fill(true);
 
     // Get references to elements
@@ -443,8 +457,62 @@
 
     instantAnalysis = false;
 
-    const anteInput = document.getElementById('ante');
-    const cardsPerAnteInput = document.getElementById('cardsPerAnte');
+    const anteSelectContainer = document.getElementById('anteSelectContainer');
+    const addAnteBtn = document.getElementById('addAnteBtn');
+    // 记录被选中的ante及其card数量
+    let anteCardMap = [{ante: 1, cards: 15}]; // 默认有一项
+
+    function renderAnteInputs() {
+      anteSelectContainer.innerHTML = '';
+      anteCardMap.forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.style.marginBottom = '6px';
+        // ante编号输入
+        const anteInput = document.createElement('input');
+        anteInput.type = 'number';
+        anteInput.min = 1;
+        anteInput.max = 999;
+        anteInput.value = item.ante;
+        anteInput.style.width = '50px';
+        anteInput.addEventListener('input', (e) => {
+          anteCardMap[idx].ante = parseInt(e.target.value) || 1;
+        });
+        // card数量输入
+        const cardInput = document.createElement('input');
+        cardInput.type = 'number';
+        cardInput.min = 0;
+        cardInput.value = item.cards;
+        cardInput.style.width = '60px';
+        cardInput.addEventListener('input', (e) => {
+          anteCardMap[idx].cards = parseInt(e.target.value) || 0;
+        });
+        // 删除按钮
+        const delBtn = document.createElement('button');
+        delBtn.type = 'button';
+        delBtn.textContent = '删除本底注';
+        delBtn.style.marginLeft = '8px';
+        delBtn.onclick = () => {
+          anteCardMap.splice(idx, 1);
+          renderAnteInputs();
+        };
+        div.appendChild(document.createTextNode('底注:'));
+        div.appendChild(anteInput);
+        div.appendChild(document.createTextNode(' 预测商店卡牌数:'));
+        div.appendChild(cardInput);
+        if (anteCardMap.length > 1) div.appendChild(delBtn);
+        anteSelectContainer.appendChild(div);
+      });
+    }
+    addAnteBtn.onclick = function() {
+      // 默认添加下一个未用的ante编号
+      let nextAnte = 1;
+      const used = anteCardMap.map(x=>x.ante);
+      while (used.includes(nextAnte)) nextAnte++;
+      anteCardMap.push({ante: nextAnte, cards: 15});
+      renderAnteInputs();
+    };
+    renderAnteInputs();
+
     const deckSelect = document.getElementById('deck');
     const stakeSelect = document.getElementById('stake');
     const versionSelect = document.getElementById('version');
@@ -483,8 +551,10 @@
       const base64Unlocks = btoa(String.fromCharCode.apply(null, byteArray));
 
       // Add non-default input values as URL parameters
-      if (anteInput.value !== '8') params.append('ante', anteInput.value);
-      if (cardsPerAnteInput.value !== '15,50,50,50,50,50,50,50') params.append('cardsPerAnte', cardsPerAnteInput.value);
+      if (anteCardMap.length > 1) {
+        const anteParams = anteCardMap.map(item => `${item.ante}:${item.cards}`).join(',');
+        params.append('ante', anteParams);
+      }
       if (deckSelect.value !== 'Red Deck') params.append('deck', deckSelect.value);
       if (stakeSelect.value !== 'White Stake') params.append('stake', stakeSelect.value);
       if (versionSelect.value != '10106') params.append('version', versionSelect.value);
@@ -522,17 +592,14 @@
     analyzeButton.addEventListener('click', performAnalysis);
 
     function performAnalysis() {
-      // Get input values
-      const ante = parseInt(anteInput.value, 10);
-      const cardsPerAnte = cardsPerAnteInput.value.split(',').map(Number);
+      // 获取用户选择的ante和每个ante的card数量
+      // 按ante升序排列
+      const anteList = anteCardMap.slice().sort((a,b)=>a.ante-b.ante);
       const deck = deckSelect.value;
       const stake = stakeSelect.value;
       const version = parseInt(versionSelect.value);
       const seed = seedInput.value.toUpperCase().replace(/0/g, 'O');
-
       output = "";
-
-      // It's analysis time!
       var inst = new Immolate.Instance(seed);
       inst.params = new Immolate.InstParams(deck, stake, false, version);
       inst.initLocks(1, false, false);
@@ -558,7 +625,9 @@
       inst.setStake(stake);
       inst.setDeck(deck);
       var ghostDeck = (deck == "Ghost Deck");
-      for (let a = 1; a <= ante; a++) {
+      for (let k = 0; k < anteList.length; k++) {
+        const a = anteList[k].ante;
+        const cardsThisAnte = anteList[k].cards;
         inst.initUnlocks(a, false);
         output += "==ANTE " + a + "==\n"
         output += "Boss: " + inst.nextBoss(a) + "\n";
@@ -575,9 +644,8 @@
             };
         };
         output += "Tags: " + inst.nextTag(a) + ", " + inst.nextTag(a) + "\n";
-
         output += "Shop Queue: \n";
-        for (let q = 1; q <= cardsPerAnte[a-1]; q++) {
+        for (let q = 1; q <= cardsThisAnte; q++) {
           output += q + ") ";
           var item = inst.nextShopItem(a);
           if (item.type == "Joker") {
@@ -589,7 +657,6 @@
           output += item.item + "\n";
           item.delete();
         }
-
         output += "\nPacks: \n";
         var numPacks = (a == 1) ? 4 : 6;
         for (let p = 1; p <= numPacks; p++) {
@@ -661,20 +728,14 @@
           }
           output += "\n";
         }
-
         output += "\n";
       };
-
       inst.delete();
-
-      // Update output box with analysis result
       outputBox.value = output;
     }
 
     window.addEventListener('DOMContentLoaded', () => {
       const seedInput = document.getElementById('seed');
-      const cardsPerAnteInput = document.getElementById('cardsPerAnte');
-      const anteInput = document.getElementById('ante');
       const deckInput = document.getElementById('deck');
       const stakeInput = document.getElementById('stake');
       const versionInput = document.getElementById('version');
@@ -682,8 +743,6 @@
       // Get seed value from URL parameters
       const urlParams = new URLSearchParams(window.location.search);
       const urlSeed = urlParams.get('seed');
-      const urlAnte = urlParams.get('ante');
-      const urlCardsPerAnte = urlParams.get('cardsPerAnte');
       const urlDeck = urlParams.get('deck');
       const urlStake = urlParams.get('stake');
       const urlVersion = urlParams.get('version');
@@ -706,39 +765,6 @@
       }
 
       // Set default seed value
-      if (urlAnte) {
-        anteInput.value = urlAnte;
-        anteInput.value = Math.min(anteInput.value, 999);
-        anteInput.value = Math.max(anteInput.value, 1);
-        cardsPerAnteInput.value = "15,50,50,50,50,50,50,50";
-        var input = cardsPerAnteInput.value.split(',').map(Number);
-        var fixedInput = []
-        for (let i = 0; i < anteInput.value; i++) {
-          if (input.length < i) {
-            fixedInput.push(0);
-          } else {
-            fixedInput.push(input[i]);
-          }
-          if (fixedInput[i] == undefined) fixedInput[i] = 0;
-          if (isNaN(fixedInput[i])) fixedInput[i] = 0;
-        }
-        cardsPerAnteInput.value = fixedInput;
-      }
-      if (urlCardsPerAnte) {
-        cardsPerAnteInput.value = urlCardsPerAnte;
-        var input = cardsPerAnteInput.value.split(',').map(Number);
-        var fixedInput = []
-        for (let i = 0; i < anteInput.value; i++) {
-          if (input.length < i) {
-            fixedInput.push(0);
-          } else {
-            fixedInput.push(input[i]);
-          }
-          if (fixedInput[i] == undefined) fixedInput[i] = 0;
-          if (isNaN(fixedInput[i])) fixedInput[i] = 0;
-        }
-        cardsPerAnteInput.value = fixedInput;
-      }
       if (urlDeck) {
         deckInput.value = urlDeck;
       }
@@ -757,36 +783,6 @@
       seedInput.addEventListener('input', () => {
         seedInput.value = filterSeed(seedInput.value);
       });
-      anteInput.addEventListener('input', () => {
-        anteInput.value = Math.min(anteInput.value, 999);
-        anteInput.value = Math.max(anteInput.value, 1);
-        var input = cardsPerAnteInput.value.split(',').map(Number);
-        var fixedInput = []
-        for (let i = 0; i < anteInput.value; i++) {
-          if (input.length < i) {
-            fixedInput.push(0);
-          } else {
-            fixedInput.push(input[i]);
-          }
-          if (fixedInput[i] == undefined) fixedInput[i] = 0;
-          if (isNaN(fixedInput[i])) fixedInput[i] = 0;
-        }
-        cardsPerAnteInput.value = fixedInput;
-      });
-      cardsPerAnteInput.addEventListener('input', () => {
-        var input = cardsPerAnteInput.value.split(',').map(Number);
-        var fixedInput = []
-        for (let i = 0; i < anteInput.value; i++) {
-          if (input.length < i) {
-            fixedInput.push(0);
-          } else {
-            fixedInput.push(input[i]);
-          }
-          if (fixedInput[i] == undefined) fixedInput[i] = 0;
-          if (isNaN(fixedInput[i])) fixedInput[i] = 0;
-        }
-        cardsPerAnteInput.value = fixedInput;
-      });
 
       function filterSeed(seed) {
         const filteredSeed = seed.replace(/[^A-Za-z0-9]/g, '').toUpperCase().replace(/0/g, 'O');
@@ -794,6 +790,29 @@
         // Truncate the seed if it's longer than 8 characters
         return filteredSeed.slice(0, 8);
       }
+    });
+
+    // 只有在用户关闭标签页时才发送信号，刷新和跳转时不发送
+    let isClosing = false;
+    window.addEventListener('keydown', function(e) {
+      // 检测 Ctrl+W 或 Cmd+W 关闭标签页
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === 'w') {
+        isClosing = true;
+      }
+    });
+    window.addEventListener('mousedown', function(e) {
+      // 检测点击浏览器的关闭按钮（部分浏览器支持）
+      if (e.button === 1) { // 鼠标中键关闭
+        isClosing = true;
+      }
+    });
+    window.addEventListener('beforeunload', function(e) {
+      // 检查是否为关闭标签页
+      if (isClosing) {
+        navigator.sendBeacon('/shutdown');
+      }
+      // 重置状态，防止误判
+      isClosing = false;
     });
   </script>
 </html>

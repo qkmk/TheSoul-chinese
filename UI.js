@@ -29,6 +29,387 @@ const stickerMap = {
     "Rental": { x: 1, y: 2 }
 };
 
+// 中文名映射表
+const nameMap = {
+    "Abandoned Deck": "废弃牌组",
+    "Anaglyph Deck": "浮雕牌组",
+    "Black Deck": "黑色牌组",
+    "Blue Deck": "蓝色牌组",
+    "Challenge Deck": "挑战牌组",
+    "Checkered Deck": "方格牌组",
+    "Erratic Deck": "古怪牌组",
+    "Ghost Deck": "幽灵牌组",
+    "Green Deck": "绿色牌组",
+    "Magic Deck": "魔法牌组",
+    "Nebula Deck": "星云牌组",
+    "Painted Deck": "彩绘牌组",
+    "Plasma Deck": "等离子牌组",
+    "Red Deck": "红色牌组",
+    "Yellow Deck": "黄色牌组",
+    "Zodiac Deck": "黄道牌组",
+    "The Arm": "手臂",
+    "Big Blind": "大盲注",
+    "The Club": "梅花",
+    "The Eye": "眼睛",
+    "Amber Acorn": "琥珀之实",
+    "Cerulean Bell": "蔚蓝之铃",
+    "Crimson Heart": "绯红之心",
+    "Verdant Leaf": "翠绿之叶",
+    "Violet Vessel": "靛紫之杯",
+    "The Fish": "鱼",
+    "The Flint": "燧石",
+    "The Goad": "挑衅",
+    "The Head": "头部",
+    "The Hook": "钩子",
+    "The House": "房屋",
+    "The Manacle": "镣铐",
+    "The Mark": "标记",
+    "The Mouth": "嘴巴",
+    "The Needle": "针",
+    "The Ox": "公牛",
+    "The Pillar": "支柱",
+    "The Plant": "植物",
+    "The Psychic": "灵媒",
+    "The Serpent": "巨蟒",
+    "Small Blind": "小盲注",
+    "The Tooth": "牙齿",
+    "The Wall": "围墙",
+    "The Water": "水",
+    "The Wheel": "车轮",
+    "The Window": "窗口",
+    "Base": "基础",
+    "Foil": "闪箔",
+    "Holographic": "镭射",
+    "Negative": "负片",
+    "Polychrome": "多彩",
+    "Bonus Card": "奖励牌",
+    "Glass Card": "玻璃牌",
+    "Gold Card": "黄金牌",
+    "Lucky Card": "幸运牌",
+    "Mult Card": "倍率牌",
+    "Steel Card": "钢铁牌",
+    "Stone Card": "石头牌",
+    "Wild Card": "万能牌",
+    "8 Ball": "八号球",
+    "Abstract Joker": "抽象小丑",
+    "Acrobat": "杂技演员",
+    "Ancient Joker": "古老小丑",
+    "Arrowhead": "箭头",
+    "Astronomer": "天文学家",
+    "Banner": "旗帜",
+    "Baron": "男爵",
+    "Baseball Card": "棒球卡",
+    "Blackboard": "黑板",
+    "Bloodstone": "血石",
+    "Blue Joker": "蓝色小丑",
+    "Blueprint": "蓝图",
+    "Bootstraps": "提靴带",
+    "Brainstorm": "头脑风暴",
+    "Bull": "斗牛",
+    "Burglar": "窃贼",
+    "Burnt Joker": "烧焦小丑",
+    "Business Card": "名片",
+    "Canio": "卡尼奥",
+    "Campfire": "篝火",
+    "Card Sharp": "老千小丑",
+    "Cartomancer": "卡牌术士",
+    "Castle": "城堡",
+    "Cavendish": "卡文迪什",
+    "Ceremonial Dagger": "仪式匕首",
+    "Certificate": "证书",
+    "Chaos the Clown": "混沌小丑",
+    "Chicot": "希科",
+    "Clever Joker": "聪敏小丑",
+    "Cloud 9": "9霄云外",
+    "Constellation": "星座",
+    "Crafty Joker": "精明小丑",
+    "Crazy Joker": "狂野小丑",
+    "Credit Card": "信用卡",
+    "Delayed Gratification": "延迟满足",
+    "Devious Joker": "阴险小丑",
+    "Diet Cola": "零糖可乐",
+    "DNA": "DNA",
+    "Driver's License": "驾驶执照",
+    "Droll Joker": "滑稽小丑",
+    "Drunkard": "醉汉",
+    "The Duo": "二重奏",
+    "Dusk": "黄昏",
+    "Egg": "鸡蛋",
+    "Erosion": "侵蚀",
+    "Even Steven": "偶数史蒂文",
+    "Faceless Joker": "无面小丑",
+    "The Family": "一家人",
+    "Fibonacci": "斐波那契",
+    "Flash Card": "闪示卡",
+    "Flower Pot": "花盆",
+    "Fortune Teller": "占卜师",
+    "Four Fingers": "四指",
+    "Gift Card": "礼品卡",
+    "Glass Joker": "玻璃小丑",
+    "Gluttonous Joker": "暴食小丑",
+    "Golden Joker": "黄金小丑",
+    "Greedy Joker": "贪婪小丑",
+    "Green Joker": "绿色小丑",
+    "Gros Michel": "大麦克香蕉",
+    "Hack": "烂脱口秀演员",
+    "Half Joker": "半张小丑",
+    "Hallucination": "幻觉",
+    "Hanging Chad": "未断选票",
+    "Hiker": "徒步者",
+    "Hit the Road": "上路吧杰克",
+    "Hologram": "全息影像",
+    "Ice Cream": "冰淇淋",
+    "The Idol": "偶像",
+    "Invisible Joker": "隐形小丑",
+    "Joker": "小丑",
+    "Jolly Joker": "开心小丑",
+    "Juggler": "杂耍师",
+    "Loyalty Card": "积分卡",
+    "Luchador": "摔跤手",
+    "Lucky Cat": "招财猫",
+    "Lusty Joker": "色欲小丑",
+    "Mad Joker": "疯狂小丑",
+    "Madness": "疯狂",
+    "Mail In Rebate": "邮件回扣",
+    "Marble Joker": "大理石小丑",
+    "Matador": "斗牛士",
+    "Merry Andy": "快乐安迪",
+    "Midas Mask": "迈达斯面具",
+    "Mime": "哑剧演员",
+    "Misprint": "印错小丑",
+    "Mr. Bones": "骷髅先生",
+    "Mystic Summit": "神秘之峰",
+    "Obelisk": "方尖石塔",
+    "Odd Todd": "奇数托德",
+    "Onyx Agate": "缟玛瑙",
+    "Oops! All 6s": "六六大顺",
+    "The Order": "秩序",
+    "Pareidolia": "幻视",
+    "Perkeo": "帕奇欧",
+    "Photograph": "照片",
+    "Popcorn": "爆米花",
+    "Raised Fist": "致胜之拳",
+    "Ramen": "拉面",
+    "Red Card": "红牌",
+    "Reserved Parking": "私人车位",
+    "Ride the Bus": "搭乘巴士",
+    "Riff-raff": "乌合之众",
+    "Showman": "马戏团长",
+    "Rocket": "火箭",
+    "Rough Gem": "璞玉",
+    "Runner": "跑步选手",
+    "Satellite": "卫星",
+    "Scary Face": "恐怖面孔",
+    "Scholar": "学者",
+    "Séance": "通灵",
+    "Seeing Double": "重影",
+    "Seltzer": "苏打水",
+    "Shoot the Moon": "射月",
+    "Shortcut": "捷径",
+    "Sixth Sense": "第六感",
+    "Sly Joker": "奸诈小丑",
+    "Smeared Joker": "模糊小丑",
+    "Smiley Face": "微笑表情",
+    "Sock and Buskin": "喜与悲",
+    "Space Joker": "太空小丑",
+    "Splash": "飞溅",
+    "Square Joker": "方形小丑",
+    "Steel Joker": "钢铁小丑",
+    "Joker Stencil": "模具小丑",
+    "Stone Joker": "石头小丑",
+    "Stuntman": "特技演员",
+    "Supernova": "超新星",
+    "Superposition": "叠加态",
+    "Swashbuckler": "侠盗",
+    "Throwback": "回溯",
+    "Golden Ticket": "黄金门票",
+    "To the Moon": "冲向月球",
+    "To Do List": "待办清单",
+    "Trading Card": "交易卡",
+    "The Tribe": "部落",
+    "Triboulet": "特里布莱",
+    "The Trio": "三重奏",
+    "Troubadour": "游吟诗人",
+    "Spare Trousers": "备用裤子",
+    "Turtle Bean": "黑龟豆",
+    "Vagabond": "流浪者",
+    "Vampire": "吸血鬼",
+    "Walkie Talkie": "对讲机",
+    "Wee Joker": "小小丑",
+    "Wily Joker": "狡猾小丑",
+    "Wrathful Joker": "愤怒小丑",
+    "Yorick": "约里克",
+    "Zany Joker": "古怪小丑",
+    "Black Sticker": "黑标贴",
+    "Blue Seal": "蓝色蜡封",
+    "Blue Sticker": "蓝标贴",
+    "Locked": "锁定",
+    "Debuffed": "被削弱",
+    "Eternal": "永恒卡",
+    "Gold Seal": "金色蜡封",
+    "Gold Sticker": "金色标贴",
+    "Green Sticker": "绿标贴",
+    "Orange Sticker": "橙标贴",
+    "Jumbo Arcana Pack": "巨型秘术包",
+    "Mega Arcana Pack": "超级秘术包",
+    "Arcana Pack": "秘术包",
+    "Jumbo Buffoon Pack": "巨型小丑包",
+    "Mega Buffoon Pack": "超级小丑包",
+    "Buffoon Pack": "小丑包",
+    "Jumbo Celestial Pack": "巨型天体包",
+    "Mega Celestial Pack": "超级天体包",
+    "Celestial Pack": "天体包",
+    "Jumbo Spectral Pack": "巨型幻灵包",
+    "Mega Spectral Pack": "超级幻灵包",
+    "Spectral Pack": "幻灵包",
+    "Jumbo Standard Pack": "巨型标准包",
+    "Mega Standard Pack": "超级标准包",
+    "Standard Pack": "标准包",
+    "Perishable": "易腐",
+    "Pinned": "固定",
+    "Purple Seal": "紫色蜡封",
+    "Purple Sticker": "紫标贴",
+    "Red Seal": "红色蜡封",
+    "Red Sticker": "红标贴",
+    "n": "n",
+    "Rental": "租用",
+    "Not Discovered": "未发现",
+    "White Sticker": "白标贴",
+    "Ceres": "谷神星",
+    "Earth": "地球",
+    "Eris": "阋神星",
+    "Jupiter": "木星",
+    "Mars": "火星",
+    "Mercury": "水星",
+    "Neptune": "海王星",
+    "Planet X": "X行星",
+    "Pluto": "冥王星",
+    "Saturn": "土星",
+    "Uranus": "天王星",
+    "Venus": "金星",
+    "Ankh": "生命十字章",
+    "Aura": "光环",
+    "Black Hole": "黑洞",
+    "Cryptid": "神秘生物",
+    "Deja Vu": "既视感",
+    "Ectoplasm": "灵质",
+    "Familiar": "使魔",
+    "Grim": "严峻",
+    "Hex": "妖法",
+    "Immolate": "火祭",
+    "Incantation": "咒语",
+    "Medium": "灵媒",
+    "Ouija": "占卜",
+    "Sigil": "符印",
+    "The Soul": "灵魂",
+    "Talisman": "护身符",
+    "Trance": "入迷",
+    "Wraith": "幽灵",
+    "Black Stake": "黑注",
+    "Blue Stake": "蓝注",
+    "Gold Stake": "金注",
+    "Green Stake": "绿注",
+    "Orange Stake": "橙注",
+    "Purple Stake": "紫注",
+    "Red Stake": "红注",
+    "White Stake": "白注",
+    "Boss Tag": "Boss标签",
+    "Buffoon Tag": "小丑标签",
+    "Charm Tag": "吊饰标签",
+    "Coupon Tag": "代金券标签",
+    "D6 Tag": "D6标签",
+    "Double Tag": "双倍标签",
+    "Economy Tag": "经济标签",
+    "Ethereal Tag": "空灵标签",
+    "Foil Tag": "闪箔标签",
+    "Garbage Tag": "垃圾标签",
+    "Handy Tag": "顺手标签",
+    "Holographic Tag": "镭射标签",
+    "Investment Tag": "投资标签",
+    "Juggle Tag": "杂耍标签",
+    "Meteor Tag": "流星标签",
+    "Negative Tag": "负片标签",
+    "Orbital Tag": "轨道标签",
+    "Polychrome Tag": "多彩标签",
+    "Rare Tag": "稀有标签",
+    "Speed Tag": "速度标签",
+    "Standard Tag": "标准标签",
+    "Top-up Tag": "充值标签",
+    "Uncommon Tag": "罕见标签",
+    "Voucher Tag": "优惠券标签",
+    "The Chariot": "战车",
+    "Death": "死神",
+    "The Devil": "恶魔",
+    "The Emperor": "皇帝",
+    "The Empress": "皇后",
+    "The Fool": "愚者",
+    "The Hanged Man": "倒吊人",
+    "The Hierophant": "教皇",
+    "The Hermit": "隐者",
+    "The High Priestess": "女祭司",
+    "Judgement": "审判",
+    "Justice": "正义",
+    "The Lovers": "恋人",
+    "The Magician": "魔术师",
+    "The Moon": "月亮",
+    "The Star": "星星",
+    "Strength": "力量",
+    "The Sun": "太阳",
+    "Temperance": "节制",
+    "The Tower": "塔",
+    "The Wheel of Fortune": "命运之轮",
+    "The World": "世界",
+    "Antimatter": "反物质",
+    "Blank": "空白",
+    "Clearance Sale": "清仓特卖",
+    "Crystal Ball": "水晶球",
+    "Director's Cut": "导演剪辑版",
+    "Glow Up": "焕彩",
+    "Grabber": "抓手",
+    "Hieroglyph": "象形文字",
+    "Hone": "打磨",
+    "Illusion": "幻象",
+    "Liquidation": "清算",
+    "Magic Trick": "魔术",
+    "Money Tree": "摇钱树",
+    "Nacho Tong": "玉米片夹",
+    "Observatory": "天文台",
+    "Omen Globe": "预兆球",
+    "Overstock": "库存过剩",
+    "Overstock Plus": "库存过剩加强版",
+    "Paint Brush": "油漆刷",
+    "Palette": "调色板",
+    "Petroglyph": "岩画",
+    "Planet Merchant": "星球牌商人",
+    "Planet Tycoon": "星球大亨",
+    "Recyclomancy": "回收魔法",
+    "Reroll Glut": "重掷加强版",
+    "Reroll Surplus": "多次重掷",
+    "Retcon": "重构",
+    "Seed Money": "种子基金",
+    "Tarot Merchant": "塔罗牌商人",
+    "Tarot Tycoon": "塔罗大亨",
+    "Telescope": "望远镜",
+    "Wasteful": "常弃常新",
+    "Enter Name": "输入名字",
+    "Wild": "万能牌",
+    "Stone": "石头牌",
+    "Glass": "玻璃牌",
+    "Bonus": "奖励牌",
+    "Steel":"钢铁牌",
+    "Gold":"黄金牌",
+    "Lucky":"幸运牌",
+    "Mult":"倍率牌",
+    "Hearts":"红桃",
+    "Spades":"黑桃",
+    "Diamonds":"方片",
+    "Clubs":"梅花",
+    "Ace":"A",
+    "Queen":"Q",
+    "Jack":"J",
+    "King":"K"
+};
+
 function maskToCanvas(canvas, itemName, type, itemModifiers, itemStickers) {
     let itemData;
     let imgSrc;
@@ -702,11 +1083,11 @@ function searchAndHighlight() {
     const searchInput = document.createElement('input');
     searchInput.type = 'text';
     searchInput.id = 'searchInput';
-    searchInput.placeholder = 'Enter search terms (comma-separated)';
+    searchInput.placeholder = '输入搜索词(英文逗号分隔)(更建议用CTRL+F搜索)';
 
     const searchLabel = document.createElement('label');
     searchLabel.setAttribute('for', 'searchInput');
-    searchLabel.textContent = 'Press enter to search (comma separated values, min length 4 char)';
+    searchLabel.textContent = '点击Enter搜索(英文逗号分隔,最小长度4)';
 
     const searchContainer = document.createElement('div');
     searchContainer.className = 'search-container';
@@ -740,7 +1121,8 @@ function searchAndHighlight() {
         if (matches) {
             matches.forEach(match => {
                 const titleMatch = match.match(/==ANTE \d+==/);
-                const title = titleMatch ? titleMatch[0] : 'Untitled';
+                let title = titleMatch ? titleMatch[0] : 'Untitled';
+                title = title.replace(/==ANTE (\d+)==/, '==底注$1==');
                 const bossMatch = match.match(/Boss: (.+)/);
                 const voucherMatch = match.match(/Voucher: (.+)/);
                 const tagsMatch = match.match(/Tags: (.+)/);
@@ -821,7 +1203,7 @@ function searchAndHighlight() {
 
 
             const voucherElement = document.createElement('div');
-            voucherElement.innerHTML = '<b><u>Voucher</u></b>';
+            voucherElement.innerHTML = '<b><u>优惠券</u></b>';
             voucherElement.style = "font-size: 16px";
             if (voucher) {
                 const voucherContainer = document.createElement('div');
@@ -834,7 +1216,7 @@ function searchAndHighlight() {
                 voucherContainer.appendChild(voucherCanvas);
 
                 const voucherNameElement = document.createElement('div');
-                voucherNameElement.textContent = voucher;
+                voucherNameElement.textContent = nameMap[voucher] || voucher;
                 voucherNameElement.classList.add('voucherName');
                 voucherContainer.appendChild(voucherNameElement);
 
@@ -843,7 +1225,7 @@ function searchAndHighlight() {
             queueInfo.appendChild(voucherElement);
 
             const bossElement = document.createElement('div');
-            bossElement.innerHTML = '<b><u>Boss</u></b>';
+            bossElement.innerHTML = '<b><u>Boss盲注</u></b>';
             bossElement.style = "font-size: 16px";
 
             if (boss) {
@@ -857,7 +1239,7 @@ function searchAndHighlight() {
                 bossContainer.appendChild(bossCanvas);
 
                 const bossNameElement = document.createElement('div');
-                bossNameElement.textContent = boss;
+                bossNameElement.textContent = nameMap[boss] || boss;
                 bossNameElement.classList.add('bossName');
                 bossContainer.appendChild(bossNameElement);
 
@@ -867,7 +1249,7 @@ function searchAndHighlight() {
             queueInfo.appendChild(bossElement);
 
             const tagsElement = document.createElement('div');
-            tagsElement.innerHTML = '<b><u>Tags</u></b>';
+            tagsElement.innerHTML = '<b><u>标签</u></b>';
             tagsElement.style = "font-size: 16px";
 
             const tagsContainer = document.createElement('div');
@@ -884,7 +1266,7 @@ function searchAndHighlight() {
                 tagContainer.appendChild(tagCanvas);
 
                 const tagNameElement = document.createElement('div');
-                tagNameElement.textContent = tag;
+                tagNameElement.textContent = nameMap[tag] || tag;
                 tagNameElement.classList.add('tagName');
                 tagContainer.appendChild(tagNameElement);
 
@@ -918,20 +1300,20 @@ function searchAndHighlight() {
                 queueItem.appendChild(canvas);
 
                 const itemText = document.createElement('div');
-                itemText.textContent = cardName;
+                itemText.textContent = nameMap[cardName] || cardName;
                 queueItem.appendChild(itemText);
 
                 itemModifiers.forEach(mod => {
                     const modifierText = document.createElement('div');
                     modifierText.className = 'modifier';
-                    modifierText.textContent = mod;
+                    modifierText.textContent = nameMap[mod] || mod;
                     queueItem.appendChild(modifierText);
                 });
 
                 itemStickers.forEach(stick => {
                     const stickerText = document.createElement('div');
                     stickerText.className = 'sticker';
-                    stickerText.textContent = stick;
+                    stickerText.textContent = nameMap[stick] || stick;
                     queueItem.appendChild(stickerText);
                 });
 
@@ -941,7 +1323,7 @@ function searchAndHighlight() {
             if (packs.length > 0) {
                 const packsTitle = document.createElement('div');
                 packsTitle.className = 'queueTitle';
-                packsTitle.textContent = '==Packs==';
+                packsTitle.textContent = '==卡牌包==';
                 queueContainer.appendChild(packsTitle);
 
                 const packsContainer = document.createElement('div');
@@ -956,7 +1338,7 @@ function searchAndHighlight() {
                     packItem.className = 'packItem';
 
                     const packNameElement = document.createElement('div');
-                    packNameElement.textContent = packName + ': ';
+                    packNameElement.textContent = (nameMap[packName] || packName) + ': ';
                     packNameElement.classList.add('packName');
                     packItem.appendChild(packNameElement);
 
@@ -974,21 +1356,21 @@ function searchAndHighlight() {
                             cardContainer.appendChild(canvas);
 
                             const itemText = document.createElement('div');
-                            itemText.textContent = parsedCardName;
+                            itemText.textContent = nameMap[parsedCardName] || parsedCardName;
                             itemText.classList.add('cardName');
                             cardContainer.appendChild(itemText);
 
                             itemModifiers.forEach(mod => {
                                 const modifierText = document.createElement('div');
                                 modifierText.classList.add('modifier');
-                                modifierText.textContent = mod;
+                                modifierText.textContent = nameMap[mod] || mod;
                                 cardContainer.appendChild(modifierText);
                             });
 
                             itemStickers.forEach(stick => {
                                 const stickerText = document.createElement('div');
                                 stickerText.classList.add('sticker');
-                                stickerText.textContent = stick;
+                                stickerText.textContent = nameMap[stick] || stick;
                                 cardContainer.appendChild(stickerText);
                             });
                         } else {
@@ -1001,13 +1383,24 @@ function searchAndHighlight() {
                             cardContainer.appendChild(canvas);
 
                             const cardText = document.createElement('div');
-                            cardText.textContent = getStandardCardName(cardName);
+                            const stdName = getStandardCardName(cardName);
+                            if (nameMap[stdName]) {
+                                cardText.textContent = nameMap[stdName];
+                            } else {
+                                // 判断语言环境，中文用花色+点数，其他用点数+花色
+                                let lang = (window.lang || navigator.language || navigator.userLanguage || '').toLowerCase();
+                                if (lang.startsWith('zh')) {
+                                    cardText.textContent = (nameMap[suit] || suit) + (nameMap[rank] || rank);
+                                } else {
+                                    cardText.textContent = (nameMap[rank] || rank) + " " + (nameMap[suit] || suit);
+                                }
+                            }
                             cardText.classList.add('standardCardName');
                             cardContainer.appendChild(cardText);
 
                             modifiers.forEach(modifier => {
                                 const modifierText = document.createElement('div');
-                                modifierText.textContent = modifier;
+                                modifierText.textContent = nameMap[modifier] || modifier;
                                 modifierText.classList.add('modifier');
                                 modifierText.style.color = getModifierColor(modifier);
                                 cardContainer.appendChild(modifierText);
@@ -1015,7 +1408,7 @@ function searchAndHighlight() {
 
                             if (seal) {
                                 const sealText = document.createElement('div');
-                                sealText.textContent = seal;
+                                sealText.textContent = nameMap[seal] || seal;
                                 sealText.classList.add('seal');
                                 sealText.style.color = getModifierColor(seal);
                                 cardContainer.appendChild(sealText);
